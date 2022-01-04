@@ -1,6 +1,16 @@
 import re
 import long_responses as long
 import listen as ls
+import pyttsx3
+
+def SpeakText(command):
+	
+	# Initialize the engine
+	engine = pyttsx3.init()
+	engine.say(command)
+	engine.runAndWait()
+
+
 
 def message_probability(user_message, recognised_words, single_response=False, required_words=[]):
     message_certainty = 0
@@ -61,9 +71,14 @@ def check_all_messages(message):
 def get_response(user_input):
     split_message = re.split(r'\s+|[,;?!.-]\s*', user_input.lower())
     response = check_all_messages(split_message)
+
     return response
 
 
 # Testing the response system
 while True:
-    print('Jarvis: ' + get_response(ls.hear()))
+    
+    print('You: ' + ls.MyText)
+    print('Jarvis: ' + get_response(ls.MyText) )
+    SpeakText(get_response(ls.MyText))
+    break
