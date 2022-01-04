@@ -81,4 +81,4 @@ while True:
     print('You: ' + ls.MyText)
     print('Jarvis: ' + get_response(ls.MyText) )
     SpeakText(get_response(ls.MyText))
-    break
+
