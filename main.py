@@ -1,6 +1,6 @@
 import re
 import long_responses as long
-
+import listen as ls
 
 def message_probability(user_message, recognised_words, single_response=False, required_words=[]):
     message_certainty = 0
@@ -51,7 +51,7 @@ def check_all_messages(message):
 
     best_match = max(highest_prob_list, key=highest_prob_list.get)
     #uncomment line below to see probability
-    print(highest_prob_list)
+    #print(highest_prob_list)
     # print(f'Best match = {best_match} | Score: {highest_prob_list[best_match]}')
 
     return long.unknown() if highest_prob_list[best_match] < 1 else best_match
@@ -66,4 +66,4 @@ def get_response(user_input):
 
 # Testing the response system
 while True:
-    print('Jarvis: ' + get_response(input('You: ')))
+    print('Jarvis: ' + get_response(ls.hear()))
